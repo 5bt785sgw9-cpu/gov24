@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>정부24</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+    body {
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+      background-color: #f4f6f9;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .app-container {
+      max-width: 430px;
+      margin: 0 auto;
+      background-color: #f4f6f9;
+      min-height: 100vh;
+      position: relative;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      padding-bottom: 70px;
+    }
+    .screen {
+      display: none;
+    }
+    .screen.active {
+      display: block;
+    }
+    .nav-active {
+      color: #1a58c8 !important;
+      font-weight: 700;
+    }
+    .id-card-shadow {
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="app-container">
+    
+    <!-- 메인 홈 화면 -->
+    <div id="home-screen" class="screen active">
+      <!-- 대한민국 공식 전자정부 안내 바 -->
+      <div class="bg-gray-100 text-xs text-gray-600 px-4 py-1.5 flex items-center gap-1.5 border-b border-gray-200">
+        <span class="text-base">🇰🇷</span>
+        <span>이 누리집은 대한민국 공식 전자정부 누리집입니다.</span>
+      </div>
+
+      <!-- 헤더 -->
+      <div class="bg-white px-4 py-3 flex justify-between items-center border-b border-gray-100 sticky top-0 z-10">
+        <div class="flex items-center gap-1">
+          <div class="w-7 h-7 rounded-full flex items-center justify-center text-blue-800 font-black text-xl">
+            <i class="fa-solid fa-circle-notch text-blue-600"></i>
+          </div>
+          <span class="font-bold text-lg text-gray-800 tracking-tight">정부24</span>
+        </div>
+        <div class="flex items-center gap-4 text-gray-700 text-sm">
+          <button class="flex items-center gap-1 text-gray-600 font-medium">
+            <i class="fa-regular fa-user"></i>
+            <span>로그인</span>
+          </button>
+          <button class="text-xl">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- 공지사항 바 -->
+      <div class="bg-white px-4 py-2.5 flex items-center justify-between text-sm text-gray-700 border-b border-gray-100 mb-2">
+        <div class="flex items-center gap-2">
+          <span class="text-yellow-500">🔔</span>
+          <span class="font-medium">공지사항 확인하기</span>
+        </div>
+        <i class="fa-solid fa-chevron-right text-xs text-gray-400"></i>
+      </div>
+
+      <!-- 검색창 -->
+      <div class="px-4 py-2 mb-3">
+        <div class="relative flex items-center">
+          <input type="text" placeholder="정부 서비스를 쉽게 검색하세요." class="w-full bg-white border-2 border-blue-600 rounded-full py-3 pl-5 pr-12 text-sm focus:outline-none shadow-sm">
+          <button class="absolute right-4 text-blue-600 text-lg">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- 자주 찾는 서비스 -->
+      <div class="px-4 mb-4">
+        <div class="bg-blue-50/50 rounded-2xl p-4 border border-blue-100/60">
+          <div class="flex justify-between items-center mb-3">
+            <h3 class="font-bold text-gray-800 text-base">자주 찾는 서비스</h3>
+            <button class="w-6 h-6 rounded-full border border-blue-400 text-blue-600 flex items-center justify-center text-xs">
+              <i class="fa-solid fa-plus"></i>
+            </button>
+          </div>
+          
+          <div class="grid grid-cols-2 gap-2.5">
+            <div class="bg-white p-3 rounded-xl flex justify-between items-center shadow-sm border border-gray-100">
+              <span class="text-xs font-semibold text-gray-700">토지(임야)대장</span>
+              <span class="text-red-400 text-xs">📄</span>
+            </div>
+            <div class="bg-white p-3 rounded-xl flex justify-between items-center shadow-sm border border-gray-100">
+              <span class="text-xs font-semibold text-gray-700">주민등록등본(...</span>
+              <span class="text-blue-400 text-xs">📄</span>
+            </div>
+            <div class="bg-white p-3 rounded-xl flex justify-between items-center shadow-sm border border-gray-100">
+              <span class="text-xs font-semibold text-gray-700">자동차등록원부</span>
+              <span class="text-blue-500 text-xs">🚙</span>
+            </div>
+            <div class="bg-white p-3 rounded-xl flex justify-between items-center shadow-sm border border-gray-100">
+              <span class="text-xs font-semibold text-gray-700">건축물대장</span>
+              <span class="text-amber-500 text-xs">🏢</span>
+            </div>
+            <div class="bg-white p-3 rounded-xl flex justify-between items-center shadow-sm border border-gray-100">
+              <span class="text-xs font-semibold text-gray-700">가족관계증명서</span>
+              <span class="text-purple-400 text-xs"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+            </div>
+            <div class="bg-white p-3 rounded-xl flex justify-between items-center shadow-sm border border-gray-100">
+              <span class="text-xs font-semibold text-gray-700">여권 재발급</span>
+              <span class="text-emerald-500 text-xs">✏️</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 혜택알리미 -->
+      <div class="px-4 mb-4">
+        <div class="flex items-center gap-1 mb-2.5">
+          <h3 class="font-bold text-gray-800 text-base">혜택알리미</h3>
+          <i class="fa-solid fa-chevron-right text-xs text-gray-400"></i>
+        </div>
+        <div class="grid grid-cols-2 gap-2.5">
+          <div class="bg-red-50/60 p-3.5 rounded-xl border border-red-100">
+            <p class="text-xs font-semibold text-gray-800 truncate">급한 생활비, 대출 ...</p>
+          </div>
+          <div class="bg-green-50/60 p-3.5 rounded-xl border border-green-100">
+            <p class="text-xs font-semibold text-gray-800 truncate">창업을 준비 중이라...</p>
+          </div>
+          <div class="bg-gray-100/70 p-3.5 rounded-xl border border-gray-200/60">
+            <p class="text-xs font-semibold text-gray-800 truncate">혼자 살아도 든든하...</p>
+          </div>
+          <div class="bg-blue-50/60 p-3.5 rounded-xl border border-blue-100">
+            <p class="text-xs font-semibold text-gray-800 truncate">양육 부담을 줄일 수...</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 생활·가족가이드 -->
+      <div class="px-4 mb-4">
+        <div class="bg-white rounded-2xl p-4 shadow-sm border border-gray-100">
+          <div class="flex items-center gap-1 mb-3">
+            <h3 class="font-bold text-gray-800 text-base">생활·가족가이드</h3>
+            <i class="fa-solid fa-chevron-right text-xs text-gray-400"></i>
+          </div>
+
+          <!-- 아이콘 탭 -->
+          <div class="flex justify-between items-center mb-4 text-center">
+            <div class="flex flex-col items-center">
+              <div class="w-10 h-10 rounded-full border-2 border-blue-600 flex items-center justify-center text-blue-600 bg-blue-50 mb-1">
+                <i class="fa-solid fa-users text-sm"></i>
+              </div>
+              <span class="text-xs font-bold text-blue-600">가족교육</span>
+            </div>
+            <div class="flex flex-col items-center opacity-60">
+              <div class="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-gray-600 mb-1">
+                🏠
+              </div>
+              <span class="text-xs text-gray-600">이사</span>
+            </div>
+            <div class="flex flex-col items-center opacity-60">
+              <div class="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-gray-600 mb-1">
+                👶
+              </div>
+              <span class="text-xs text-gray-600">육아</span>
+            </div>
+            <div class="flex flex-col items-center opacity-60">
+              <div class="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-gray-600 mb-1">
+                💍
+              </div>
+              <span class="text-xs text-gray-600">결혼</span>
+            </div>
+            <div class="flex flex-col items-center opacity-60">
+              <div class="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-gray-600 mb-1">
+                🌸
+              </div>
+              <span class="text-xs text-gray-600">사망</span>
+            </div>
+            <div class="flex flex-col items-center opacity-60">
+              <div class="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-gray-600 mb-1">
+                🩺
+              </div>
+              <span class="text-xs text-gray-600">보건...</span>
+            </div>
+          </div>
+
+          <!-- 가이드 리스트 -->
+          <div class="space-y-2">
+            <div class="bg-gray-50 p-3 rounded-lg flex justify-between items-center text-xs text-gray-700">
+              <span class="truncate">가족관계교육이 궁금하거나 가족센터서비...</span>
+              <i class="fa-solid fa-chevron-right text-gray-400"></i>
+            </div>
+            <div class="bg-gray-50 p-3 rounded-lg flex justify-between items-center text-xs text-gray-700">
+              <span class="truncate">임신·출산·육아에 대한 믿을 수 있는 정보...</span>
+              <i class="fa-solid fa-chevron-right text-gray-400"></i>
+            </div>
+            <div class="bg-gray-50 p-3 rounded-lg flex justify-between items-center text-xs text-gray-700">
+              <span class="truncate">영유아 자녀를 양육하고 있을 때</span>
+              <i class="fa-solid fa-chevron-right text-gray-400"></i>
+            </div>
+            <div class="bg-gray-50 p-3 rounded-lg flex justify-between items-center text-xs text-gray-700">
+              <span class="truncate">부모로서 한 단계 성장하고 싶을 때</span>
+              <i class="fa-solid fa-chevron-right text-gray-400"></i>
+            </div>
+            <div class="bg-gray-50 p-3 rounded-lg flex justify-between items-center text-xs text-gray-700">
+              <span class="truncate">청소년 자녀와의 관계가 어려울 때</span>
+              <i class="fa-solid fa-chevron-right text-gray-400"></i>
+            </div>
+            <div class="bg-gray-50 p-3 rounded-lg flex justify-between items-center text-xs text-gray-700">
+              <span class="truncate">부모와 자녀 모두 행복해지는 긍정양육 교...</span>
+              <i class="fa-solid fa-chevron-right text-gray-400"></i>
+            </div>
+            <div class="bg-gray-50 p-3 rounded-lg flex justify-between items-center text-xs text-gray-700">
+              <span class="truncate">청년이 결혼·출산·양육을 준비하고 미래 역...</span>
+              <i class="fa-solid fa-chevron-right text-gray-400"></i>
+            </div>
+          </div>
+
+          <div class="flex justify-center mt-3">
+            <button class="px-4 py-1 border border-blue-600 text-blue-600 text-xs rounded-full font-medium">
+              접기 <i class="fa-solid fa-chevron-up text-3xs"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 서비스 바로가기 (핵심 링크) -->
+      <div class="px-4 mb-6">
+        <h3 class="font-bold text-gray-800 text-base mb-2.5">서비스 바로가기</h3>
+        <div class="space-y-2">
+          <!-- 주민등록증 모바일 확인 서비스 (클릭 시 신분증 이동) -->
+          <button onclick="showScreen('id-screen')" class="w-full bg-white p-3.5 rounded-xl border border-gray-200 flex justify-between items-center shadow-sm hover:border-blue-500 transition">
+            <span class="font-bold text-sm text-gray-800">주민등록증 모바일 확인 서비스</span>
+            <div class="w-7 h-7 bg-blue-50 text-blue-600 rounded-lg flex items-center justify-center">
+              <i class="fa-solid fa-id-card text-sm"></i>
+            </div>
+          </button>
+          <div class="bg-white p-3.5 rounded-xl border border-gray-200 flex justify-between items-center shadow-sm">
+            <span class="font-bold text-sm text-gray-800">주소 영문 변환 서비스</span>
+            <div class="w-7 h-7 bg-indigo-50 text-indigo-600 rounded-lg flex items-center justify-center">
+              <i class="fa-solid fa-house text-sm"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 분야별 정책정보 / 국민소통채널 -->
+      <div class="px-4 border-t border-gray-200 py-3 bg-white">
+        <div class="flex justify-between items-center py-2 border-b border-gray-100 text-sm font-semibold text-gray-700">
+          <span>분야별 정책정보</span>
+          <i class="fa-solid fa-plus text-gray-400"></i>
+        </div>
+        <div class="flex justify-between items-center py-2 text-sm font-semibold text-gray-700">
+          <span>국민소통채널</span>
+          <i class="fa-solid fa-plus text-gray-400"></i>
+        </div>
+      </div>
+
+      <!-- 푸터 -->
+      <div class="bg-gray-100 p-4 text-xs text-gray-600 space-y-3 border-t border-gray-200">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-1">
+            <i class="fa-solid fa-circle-notch text-blue-700 text-sm"></i>
+            <span class="font-bold text-gray-800">정부24</span>
+            <i class="fa-solid fa-chevron-down text-3xs text-gray-500"></i>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="w-6 h-6 rounded-full bg-white border border-gray-300 flex items-center justify-center font-bold text-gray-600">X</span>
+            <span class="w-6 h-6 rounded-full bg-white border border-gray-300 flex items-center justify-center font-bold text-gray-600">,,</span>
+            <span class="w-6 h-6 rounded-full bg-white border border-gray-300 flex items-center justify-center text-xs bg-gray-800 text-white"><i class="fa-solid fa-b"></i></span>
+          </div>
+        </div>
+
+        <div>
+          <p class="font-bold text-gray-800">콜센터</p>
+          <p class="text-gray-700">1588-2188,</p>
+          <p class="text-gray-700">02-721-0600 (지역번호 '02'를 확인하세요.)</p>
+          <p class="text-gray-500">(09:00 ~ 18:00 평일)</p>
+        </div>
+
+        <div>
+          <p class="font-bold text-gray-800">정부민원안내콜센터</p>
+          <p class="text-gray-700">국번없이 110 (무료, 휴일포함 365일 24시간)</p>
+        </div>
+
+        <div class="flex gap-4 font-semibold text-gray-700 pt-1">
+          <span>개인정보처리방침</span>
+          <span>이용약관</span>
+        </div>
+
+        <p class="text-gray-400 text-3xs">© Ministry of the Interior and Safety. All Rights Reserved.</p>
+      </div>
+    </div>
+
+    <!-- 주민등록증 모바일 확인 서비스 화면 -->
+    <div id="id-screen" class="screen">
+      <!-- 헤더 -->
+      <div class="bg-white px-4 py-3 flex justify-between items-center border-b border-gray-200 sticky top-0 z-10">
+        <button onclick="showScreen('home-screen')" class="text-lg text-gray-700">
+          <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <span class="font-bold text-base text-gray-800">주민등록증 모바일 확인 서비스</span>
+        <button onclick="openEditModal()" class="text-xs bg-gray-100 text-gray-700 px-2.5 py-1 rounded-md font-medium border border-gray-300">
+          수정
+        </button>
+      </div>
+
+      <!-- 메인 카카오/정부24 스타일 신분증 카드 -->
+      <div class="p-4">
+        <div class="bg-white rounded-2xl p-5 id-card-shadow border border-gray-100">
+          
+          <!-- 증명사진 (상단 중앙) -->
+          <div class="flex justify-center mb-5">
+            <div class="w-32 h-40 bg-gray-100 rounded-lg overflow-hidden border border-gray-200 shadow-inner">
+              <img id="card-photo" src="https://via.placeholder.com/150x190?text=%EC%A6%9D%EB%AA%85%EC%82%AC%EC%A7%84" alt="증명사진" class="w-full h-full object-cover">
+            </div>
+          </div>
+
+          <!-- 하단 영역 (왼쪽: 이름/생년월일, 오른쪽: QR코드) -->
+          <div class="grid grid-cols-12 gap-2 items-center border-t border-gray-100 pt-4">
+            
+            <!-- 왼쪽: 이름 & 생년월일 -->
+            <div class="col-span-7 flex flex-col justify-center">
+              <div class="text-xs text-gray-400 font-medium mb-1">성명</div>
+              <div id="card-name" class="text-xl font-bold text-gray-900 tracking-tight mb-3">홍길동</div>
+              
+              <div class="text-xs text-gray-400 font-medium mb-1">생년월일</div>
+              <div id="card-birth" class="text-sm font-semibold text-gray-800">2000. 01. 01</div>
+            </div>
+
+            <!-- 오른쪽: QR 코드 -->
+            <div class="col-span-5 flex flex-col items-center justify-center border-l border-gray-100 pl-2">
+              <div class="w-24 h-24 bg-white p-1 border border-gray-200 rounded-lg shadow-sm">
+                <img id="card-qr" src="https://via.placeholder.com/100?text=QR" alt="QR코드" class="w-full h-full object-contain">
+              </div>
+              <span class="text-3xs text-gray-400 mt-1.5 font-mono">남은시간: <span id="timer-text" class="text-blue-600 font-bold">30</span>초</span>
+            </div>
+
+          </div>
+
+          <!-- 보안 캡션 -->
+          <div class="mt-4 pt-3 border-t border-dashed border-gray-200 text-center">
+            <p class="text-3xs text-gray-400">본 확인화면은 주민등록법 제30조에 따라 주민등록증과 동일한 효력을 갖습니다.</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- 정보 수정 모달 -->
+    <div id="edit-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50 hidden">
+      <div class="bg-white rounded-2xl w-full max-w-xs p-5 shadow-2xl">
+        <h3 class="text-base font-bold text-gray-800 mb-4 border-b pb-2">신분증 정보 수정</h3>
+        
+        <div class="space-y-3 text-xs">
+          <div>
+            <label class="block font-semibold text-gray-600 mb-1">성명</label>
+            <input type="text" id="input-name" class="w-full border border-gray-300 rounded p-2 focus:outline-none focus:border-blue-500">
+          </div>
+
+          <div>
+            <label class="block font-semibold text-gray-600 mb-1">생년월일 (YYYY. MM. DD)</label>
+            <input type="text" id="input-birth" class="w-full border border-gray-300 rounded p-2 focus:outline-none focus:border-blue-500">
+          </div>
+
+          <div>
+            <label class="block font-semibold text-gray-600 mb-1">증명사진 변경</label>
+            <input type="file" id="input-photo" accept="image/*" class="w-full text-2xs text-gray-500">
+          </div>
+
+          <div>
+            <label class="block font-semibold text-gray-600 mb-1">QR코드 이미지 변경</label>
+            <input type="file" id="input-qr" accept="image/*" class="w-full text-2xs text-gray-500">
+          </div>
+        </div>
+
+        <div class="flex gap-2 mt-5">
+          <button onclick="closeEditModal()" class="flex-1 py-2 bg-gray-200 text-gray-700 rounded-lg text-xs font-bold">취소</button>
+          <button onclick="saveEditData()" class="flex-1 py-2 bg-blue-600 text-white rounded-lg text-xs font-bold">저장하기</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 하단 고정 네비게이션 바 -->
+    <div class="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-white border-t border-gray-200 py-2 px-6 flex justify-between items-center z-20">
+      <button onclick="showScreen('home-screen')" class="flex flex-col items-center gap-1 text-gray-500 nav-active">
+        <i class="fa-regular fa-user text-lg"></i>
+        <span class="text-3xs font-medium">MyGOV</span>
+      </button>
+      <button class="flex flex-col items-center gap-1 text-gray-400">
+        <i class="fa-solid fa-list-ul text-lg"></i>
+        <span class="text-3xs font-medium">주제별 보기</span>
+      </button>
+      <button class="flex flex-col items-center gap-1 text-gray-400">
+        <i class="fa-regular fa-comment-dots text-lg"></i>
+        <span class="text-3xs font-medium">도움말</span>
+      </button>
+      <button class="flex flex-col items-center gap-1 text-gray-400">
+        <i class="fa-solid fa-gift text-lg"></i>
+        <span class="text-3xs font-medium">혜택알림</span>
+      </button>
+    </div>
+
+  </div>
+
+  <script>
+    let timerInterval = null;
+    let timeLeft = 30;
+
+    // 화면 전환
+    function showScreen(screenId) {
+      document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+      document.getElementById(screenId).classList.add('active');
+      window.scrollTo(0, 0);
+
+      if (screenId === 'id-screen') {
+        startTimer();
+      } else {
+        stopTimer();
+      }
+    }
+
+    // 보안 타이머
+    function startTimer() {
+      stopTimer();
+      timeLeft = 30;
+      document.getElementById('timer-text').innerText = timeLeft;
+      timerInterval = setInterval(() => {
+        timeLeft--;
+        document.getElementById('timer-text').innerText = timeLeft;
+        if (timeLeft <= 0) {
+          timeLeft = 30;
+        }
+      }, 1000);
+    }
+
+    function stopTimer() {
+      if (timerInterval) clearInterval(timerInterval);
+    }
+
+    // 수정 모달 열기/닫기
+    function openEditModal() {
+      document.getElementById('input-name').value = document.getElementById('card-name').innerText;
+      document.getElementById('input-birth').value = document.getElementById('card-birth').innerText;
+      document.getElementById('edit-modal').classList.remove('hidden');
+    }
+
+    function closeEditModal() {
+      document.getElementById('edit-modal').classList.add('hidden');
+    }
+
+    // 데이터 저장
+    function saveEditData() {
+      const name = document.getElementById('input-name').value;
+      const birth = document.getElementById('input-birth').value;
+      const photoInput = document.getElementById('input-photo');
+      const qrInput = document.getElementById('input-qr');
+
+      if (name) {
+        document.getElementById('card-name').innerText = name;
+        localStorage.setItem('gov_name', name);
+      }
+      if (birth) {
+        document.getElementById('card-birth').innerText = birth;
+        localStorage.setItem('gov_birth', birth);
+      }
+
+      if (photoInput.files && photoInput.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          document.getElementById('card-photo').src = e.target.result;
+          localStorage.setItem('gov_photo', e.target.result);
+        };
+        reader.readAsDataURL(photoInput.files[0]);
+      }
+
+      if (qrInput.files && qrInput.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          document.getElementById('card-qr').src = e.target.result;
+          localStorage.setItem('gov_qr', e.target.result);
+        };
+        reader.readAsDataURL(qrInput.files[0]);
+      }
+
+      closeEditModal();
+    }
+
+    // 로드 시 로컬스토리지 불러오기
+    window.onload = function() {
+      const savedName = localStorage.getItem('gov_name');
+      const savedBirth = localStorage.getItem('gov_birth');
+      const savedPhoto = localStorage.getItem('gov_photo');
+      const savedQr = localStorage.getItem('gov_qr');
+
+      if (savedName) document.getElementById('card-name').innerText = savedName;
+      if (savedBirth) document.getElementById('card-birth').innerText = savedBirth;
+      if (savedPhoto) document.getElementById('card-photo').src = savedPhoto;
+      if (savedQr) document.getElementById('card-qr').src = savedQr;
+    };
+  </script>
+</body>
+</html>
